@@ -10,6 +10,7 @@ function AiModel() {
   const [diagram, setDiagram] = useState(null)
   const [netWork, setNetWork] = useState(null)
   const [result, setResult] = useState(null)
+  const [inputcolor, setColor] = useState()
 
   const [value, setValue] = useState('')
 
@@ -33,17 +34,26 @@ function AiModel() {
     // diagram.innerHTML = utilities.toSVG(net)
   }
   function Predict() {
-    const array = value.split(',').map((item) => parseInt(item, 10))
-    const prediction = netWork.run([value])
-    setResult(prediction)
+    let doc = document.getElementById('result')
+    // doc.style.backgroundColor = inputcolor
+    // const array = value.split(',').map((item) => parseInt(item, 10))
+    const prediction = netWork.run([inputcolor])
+    doc.style.backgroundColor = prediction
+    // setResult(prediction)
+    console.log(inputcolor)
   }
   return (
     <>
       {' '}
-      <div>{result}</div>
+      <div id="result">{result}</div>
       <input type="text" value={value} onChange={handleChange} />
       {/* <div dangerouslySetInnerHTML={{ __html: diagram }} /> */}
       <button onClick={Predict}>Predict</button>
+      <input
+        type="color"
+        onChange={(e) => setColor(e.target.value)}
+        id="colorPicker"
+      ></input>
     </>
   )
 }

@@ -3,10 +3,6 @@ import { NeuralNetwork } from 'brain.js'
 import { Row, Col } from 'react-bootstrap'
 import MassageBox from './MassageBox'
 import ColorContainer from './ColorContainer'
-// const data = [
-//   { input: [0], output: [1] },
-//   { input: [1], output: [0] },
-// ]
 
 let colorInput = []
 function AiModel() {
@@ -72,21 +68,16 @@ function AiModel() {
     // diagram.innerHTML = utilities.toSVG(net)
   }
   function Predict() {
-    let doc = document.getElementById('result-bottom')
     const input = ConvertColorToInt(value)
-    // console.log(input)
-    // const array = value.split(',').map((item) => parseInt(item, 10))
+
     const prediction = netWork.run(input)
-    //doc.style.backgroundColor = prediction
-    //setResult(prediction)
+
     setResultColour(
       `rgba(${prediction.r * 255}, ${prediction.g * 255}, ${
         prediction.b * 255
       })`,
     )
-    // doc.style.backgroundColor = `rgba(${prediction.r * 255}, ${
-    //   prediction.g * 255
-    // }, ${prediction.b * 255})`
+
     console.log(prediction)
   }
   return (

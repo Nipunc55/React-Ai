@@ -5,8 +5,8 @@ import ChatAi from './component/AiString'
 function App() {
   return (
     <div className="App">
-      {/* <AiModel /> */}
-      <ChatAi />
+      <AiModel />
+      {/* <ChatAi /> */}
     </div>
   )
 }

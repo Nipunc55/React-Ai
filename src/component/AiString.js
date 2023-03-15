@@ -17,7 +17,50 @@ function ChatAi() {
 
   const [value, setValue] = useState('')
   const [correctValue, setCorrectValue] = useState('')
+  const [newData, setQuestions] = useState()
 
+  useEffect(() => {
+    getQuestionsFromApi((data) => {
+      // console.log(data)
+      data.map((element) => {
+        console.log(element.question)
+        // console.dir(element.answers)
+        // console.dir(element.correct_answers)
+        let obj = element.correct_answers
+        let correctKey = Object.keys(obj).find((key) => obj[key] === 'true')
+        let key = correctKey.replace('_correct', '')
+        //  console.log()
+        console.log(element.answers[key])
+        let newObj = { input: element.question, output: element.answers[key] }
+        setQuestions({ input: element.question, output: element.answers[key] })
+        data.push(newObj)
+      })
+    })
+
+    return () => {}
+  }, [])
+  useEffect(() => {
+    console.log(data)
+    return () => {}
+  }, [newData])
+
+  function getQuestionsFromApi(callback) {
+    fetch(
+      'https://quizapi.io/api/v1/questions?apiKey=YrZ4NIJcGrc1DUIFZMJO6goY5vpZ96WgMG4056RY&limit=10',
+    )
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok')
+        }
+        return response.json()
+      })
+      .then((data) => {
+        callback(data)
+      })
+      .catch((error) => {
+        console.error('There was a problem with the fetch operation:', error)
+      })
+  }
   function handleChange(event) {
     setValue(event.target.value)
   }
@@ -27,7 +70,7 @@ function ChatAi() {
 
   useEffect(() => {
     setLoading(true)
-    TrainData()
+    // TrainData()
   }, [])
   function TrainData() {
     const net = new recurrent.LSTM()
@@ -65,12 +108,12 @@ function ChatAi() {
           <button onClick={Predict}>Predict</button>
           <button onClick={Save}>SaveData</button>
           <button onClick={TrainData}>TrainAi</button>
-          <div>correct output</div>
+          {/* <div>correct output</div>
           <input
             type="text"
             value={correctValue}
             onChange={handleChangeCorrect}
-          />
+          /> */}
         </>
       )}
     </>

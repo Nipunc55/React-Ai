@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { NeuralNetwork, utilities } from 'brain.js'
+import { NeuralNetwork } from 'brain.js'
 
-const data = [
-  { input: [0], output: [1] },
-  { input: [1], output: [0] },
-]
+// const data = [
+//   { input: [0], output: [1] },
+//   { input: [1], output: [0] },
+// ]
 
 let colorInput = []
 function AiModel() {
-  const [diagram, setDiagram] = useState(null)
+  // const [diagram, setDiagram] = useState(null)
   const [netWork, setNetWork] = useState(null)
-  const [result, setResult] = useState(null)
+  // const [result, setResult] = useState(null)
   const [inputBottomcolor, setBottomColor] = useState()
   const [inputTopColor, setTopColor] = useState(null)
 
@@ -37,10 +37,10 @@ function AiModel() {
     const colorCode = { r: red, g: green, b: blue }
     return colorCode
   }
-  function ConvertIntToColor(colorInt) {
-    const hexColorCode = '#' + colorInt.toString(16)
-    return hexColorCode
-  }
+  // function ConvertIntToColor(colorInt) {
+  //   const hexColorCode = '#' + colorInt.toString(16)
+  //   return hexColorCode
+  // }
 
   useEffect(() => {
     //TrainData()

@@ -25,9 +25,7 @@ function ColorContainer(props) {
       {' '}
       <Row>
         <Col>
-          <div id="result-top-container-1" className="result">
-            {props.inputTopColor}
-          </div>
+          <div id="result-top-container-1" className="result"></div>
         </Col>
         <Col>
           {' '}
@@ -43,9 +41,7 @@ function ColorContainer(props) {
       </Row>
       <Row>
         <Col>
-          <div id="result-bottom-container-1" className="result">
-            {props.inputBottomColor}
-          </div>
+          <div id="result-bottom-container-1" className="result"></div>
         </Col>
         <Col>
           {/* <input

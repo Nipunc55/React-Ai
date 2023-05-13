@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import {  recurrent } from 'brain.js'
 
 const data = [
@@ -70,6 +70,7 @@ function ChatAi() {
 
   useEffect(() => {
     setLoading(true)
+    handleChangeCorrect()
     // TrainData()
   }, [])
   function TrainData() {

@@ -22,7 +22,7 @@ const Loader = (props) => {
       action.play()
       // action.halt(8)
       gltf.animations.forEach((clip) => {
-        const action = mixer.clipAction(clip)
+        // const action = mixer.clipAction(clip)
         console.log(clip)
         // action.play()
 

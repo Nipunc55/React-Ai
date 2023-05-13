@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import { NeuralNetwork } from 'brain.js'
 import { Row, Col } from 'react-bootstrap'
 import MassageBox from './MassageBox'

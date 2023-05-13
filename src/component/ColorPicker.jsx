@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import ConvertColorToRGB from '../Utils/ConvertColor'
 
 
@@ -15,10 +15,11 @@ export default function ColorPicker(props) {
                           
                         
                
+                             // eslint-disable-next-line react/prop-types
                              props.colorInput(color.int)
                             
-                        }
-                        }
+                            }
+                      }
             id="colorPicker"
           ></input>
           <div>{name}</div>

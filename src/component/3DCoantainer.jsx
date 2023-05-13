@@ -7,7 +7,7 @@ export default function Coantainer() {
      const [inputColor, setinputColor] = useState()
 
      const t_shirt = {
-       position: [0, 0, -50],
+       position: [0, 0, -60],
        path: './3Dmodels/t_shirt.gltf',
        scale: 1,
      }

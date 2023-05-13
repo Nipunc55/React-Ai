@@ -21,4 +21,5 @@ canvas{
   right: 0;
   background-color: rgb(77, 78, 78);
   border-radius: 10px;
+  margin: 10px;
 }

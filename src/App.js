@@ -1,10 +1,14 @@
 import './App.css'
 import AiModel from './component/AI'
+import AITrain from './component/AITrain'
+import Coantainer from './component/3DCoantainer'
 
 function App() {
   return (
     <div className="App">
-      <AiModel />
+      {/* <AiModel /> */}
+      {/* <AITrain /> */}
+      <Coantainer />
     </div>
   )
 }

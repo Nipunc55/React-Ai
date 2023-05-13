@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { NeuralNetwork, utilities, recurrent } from 'brain.js'
+import {  recurrent } from 'brain.js'
 
 const data = [
   { input: 'I feel great about the world!', output: 'happy' },
@@ -8,7 +8,7 @@ const data = [
   { input: 'Hi how are you', output: 'I am good' },
   { input: 'me too', output: 'nice' },
 ]
-const defaultText = 'I didnt get that !'
+
 
 function ChatAi() {
   const [loading, setLoading] = useState(true)

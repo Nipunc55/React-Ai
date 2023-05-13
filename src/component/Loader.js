@@ -3,7 +3,7 @@ import { useFrame, useThree } from '@react-three/fiber'
 import { useLoader } from '@react-three/fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import * as THREE from 'three'
-import { OrbitControls, useTexture } from '@react-three/drei'
+import { OrbitControls } from '@react-three/drei'
 
 const Loader = (props) => {
   const [center, setCenter] = useState([0, 0, 0])
@@ -54,7 +54,7 @@ if(clickedObject)clickedObject.material.color=props.materialColor
     if (intersects.length > 0) {
       const clickedObject = intersects[0].object
       if (clickedObject) {
-        const { name, position } = clickedObject
+        // const { name, position } = clickedObject
         // props.onDataReceve(clickedObject)
         setClickedObject(clickedObject)
 

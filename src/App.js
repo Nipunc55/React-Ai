@@ -1,6 +1,5 @@
 import './App.css'
-import AiModel from './component/AI'
-import AITrain from './component/AITrain'
+
 import Coantainer from './component/3DCoantainer'
 
 function App() {

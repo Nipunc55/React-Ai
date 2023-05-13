@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import ConvertColorToRGB from '../Utils/ConvertColor'
-import * as colorName from 'color-name';
+
 
 export default function ColorPicker(props) {
      const [name, setName] = useState(null)

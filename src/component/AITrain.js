@@ -54,6 +54,7 @@ export default function AITrain() {
     setMassage('model is beign training by the data..')
     const net = new NeuralNetwork()
     net.train(colorInput)
+    console.log(netWork);
     // setDiagram(utilities.toSVG(net))
     setNetWork(net)
     setMassage('training completed...')

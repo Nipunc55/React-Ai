@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react'
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable react/prop-types */
+import  { useState, useEffect, useRef } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import { useLoader } from '@react-three/fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
@@ -11,6 +13,7 @@ const Loader = (props) => {
   const mesh = useRef()
   const orbitRef = useRef()
   const { camera } = useThree()
+  // eslint-disable-next-line react/prop-types
   const gltf = useLoader(GLTFLoader, props.name.path)
   const raycaster = new THREE.Raycaster()
   //console.log('loader rendered')
@@ -74,7 +77,7 @@ if(clickedObject)clickedObject.material.color=props.materialColor
   }
 
   //*********/
-  useFrame((state, delta) => {
+  useFrame(() => {
     orbitRef.current.update()
     
   })

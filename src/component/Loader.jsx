@@ -60,7 +60,7 @@ if(clickedObject)clickedObject.material.color=props.materialColor
         // const { name, position } = clickedObject
         // props.onDataReceve(clickedObject)
         setClickedObject(clickedObject)
-
+       console.log(clickedObject);
         //clickedObject.material.metalness = 1
         let {r,g,b}=clickedObject.material.color
         

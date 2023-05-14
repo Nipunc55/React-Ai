@@ -7,17 +7,17 @@ export default function Coantainer() {
      const [inputColor, setinputColor] = useState()
 
      const t_shirt = {
-       position: [0, 0, -60],
-       path: './3Dmodels/t_shirt.gltf',
-       scale: 1,
+       position: [0, 0,0],
+       path: './3Dmodels/girl_2.gltf',
+       scale:1,
      }
   return (
     <div>
-         <Canvas className='canvas_cantainer'>
+      <Canvas className='canvas_cantainer'>
 
         <Loader name={t_shirt} materialColor={inputColor} />
         </Canvas>
-       <ColorPicker colorInput={setinputColor}/>
+      <ColorPicker colorInput={setinputColor}/>
         
         </div>
   )

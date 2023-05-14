@@ -9,12 +9,14 @@ import { OrbitControls } from '@react-three/drei'
 
 const Loader = (props) => {
   const [center, setCenter] = useState([0, 0, 0])
+ 
   const [clickedObject, setClickedObject] = useState(null)
+  const gltf = useLoader(GLTFLoader, props.name.path)
   const mesh = useRef()
   const orbitRef = useRef()
   const { camera } = useThree()
-  // eslint-disable-next-line react/prop-types
-  const gltf = useLoader(GLTFLoader, props.name.path)
+
+
   const raycaster = new THREE.Raycaster()
   //console.log('loader rendered')
   useEffect(() => {
@@ -33,18 +35,13 @@ const Loader = (props) => {
       })
     }
   }, [])
-  useEffect(() => {
-   console.log(props.name);
-  }, [props.name])
+
+ 
   
   useEffect(() => {
-    // const { metalness, roughness } = props.option
-    // if (clickedObject) {
-    //   clickedObject.material.metalness = metalness
-    //   clickedObject.material.roughness = roughness
-    // }
+    
 if(clickedObject)clickedObject.material.color=props.materialColor
-   //console.log(props.materialColor)
+  
   }, [props.materialColor])
 
   /**
@@ -88,14 +85,15 @@ if(clickedObject)clickedObject.material.color=props.materialColor
 
   return (
     <>
-            {/* <pointLight position={[0, 1, 0]} color="#001BFF" intensity={0.6} /> */}
+       {/* <pointLight position={[0, 1, 0]} color="#001BFF" intensity={0.6} /> */}
       <ambientLight intensity={0.2} />
       <directionalLight color="#ffffff" intensity={0.5} position={[3, 0, 3]} />
       <OrbitControls
-       maxPolarAngle={Math.PI / 2} // Limit rotation to 90 degrees (pi/2) on the X-axis
-        minPolarAngle={0} // Optionally, you can set a minimum polar angle
+        maxPolarAngle={Math.PI / 2} // Limit rotation to 90 degrees (pi/2) on the X-axis
+        minPolarAngle={Math.PI / 3} // Optionally, you can set a minimum polar angle
          ref={orbitRef} target={center} />
       <primitive
+     key={props.name.name}
         ref={mesh}
         object={gltf.scene}
         scale={props.name.scale}

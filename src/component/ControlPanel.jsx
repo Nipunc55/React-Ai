@@ -11,12 +11,12 @@ export default function ControlPanel(props) {
        path: './3Dmodels/girl_3.gltf',
        scale:0.7,
      }},
-     {name:"office_girl",data:{
+     {name:"man_normal",data:{
        position: [0,0,0],
        path: './3Dmodels/man_1.gltf',
        scale:0.7,
      }},
-     {name:"office_girl",data:{
+     {name:"man_office",data:{
        position: [0,0,0],
        path: './3Dmodels/man_2.gltf',
        scale:0.7,

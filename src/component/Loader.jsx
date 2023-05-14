@@ -34,6 +34,10 @@ const Loader = (props) => {
     }
   }, [])
   useEffect(() => {
+   console.log(props.name);
+  }, [props.name])
+  
+  useEffect(() => {
     // const { metalness, roughness } = props.option
     // if (clickedObject) {
     //   clickedObject.material.metalness = metalness
@@ -60,7 +64,7 @@ if(clickedObject)clickedObject.material.color=props.materialColor
         // const { name, position } = clickedObject
         // props.onDataReceve(clickedObject)
         setClickedObject(clickedObject)
-       console.log(clickedObject);
+      // console.log(clickedObject);
         //clickedObject.material.metalness = 1
         let {r,g,b}=clickedObject.material.color
         
@@ -68,7 +72,7 @@ if(clickedObject)clickedObject.material.color=props.materialColor
        
 
 
-        console.log(r,g,b)
+       // console.log(r,g,b)
         const worldPosition = new THREE.Vector3().copy(clickedObject.position)
         clickedObject.parent.localToWorld(worldPosition)
         setCenter(worldPosition)
@@ -87,7 +91,10 @@ if(clickedObject)clickedObject.material.color=props.materialColor
             {/* <pointLight position={[0, 1, 0]} color="#001BFF" intensity={0.6} /> */}
       <ambientLight intensity={0.2} />
       <directionalLight color="#ffffff" intensity={0.5} position={[3, 0, 3]} />
-      <OrbitControls ref={orbitRef} target={center} />
+      <OrbitControls
+       maxPolarAngle={Math.PI / 2} // Limit rotation to 90 degrees (pi/2) on the X-axis
+        minPolarAngle={0} // Optionally, you can set a minimum polar angle
+         ref={orbitRef} target={center} />
       <primitive
         ref={mesh}
         object={gltf.scene}

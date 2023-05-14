@@ -9,7 +9,7 @@ export default function Coantainer() {
      const t_shirt = {
        position: [0, 0,0],
        path: './3Dmodels/girl_2.gltf',
-       scale:1,
+       scale:0.7,
      }
   return (
     <div>

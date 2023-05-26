@@ -20,6 +20,11 @@ export default function ControlPanel(props) {
        position: [0,0,0],
        path: './3Dmodels/man_2.gltf',
        scale:0.7,
+     }},
+     {name:"dancing_girl",data:{
+       position: [0,-2,0],
+       path: './3Dmodels/girl_gym_dance.gltf',
+       scale:0.7,
      }}]
 
   return (
@@ -33,7 +38,7 @@ export default function ControlPanel(props) {
             onClick={()=>{props.setModel(item.data)
                 
                   }} 
-                  key={index} width='100%' src='/vite.svg' alt={item.name}></img>)
+                  key={index} width='70%' src='/vite.svg' alt={item.name}></img>)
          })
         )
         :(null)

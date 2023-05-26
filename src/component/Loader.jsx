@@ -6,39 +6,57 @@ import { useLoader } from '@react-three/fiber'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import * as THREE from 'three'
 import { OrbitControls } from '@react-three/drei'
-
+ let mixer
 const Loader = (props) => {
   const [center, setCenter] = useState([0, 0, 0])
  
   const [clickedObject, setClickedObject] = useState(null)
-  const gltf = useLoader(GLTFLoader, props.name.path)
+ const gltf = useLoader(GLTFLoader, props.name.path);
+
   const mesh = useRef()
   const orbitRef = useRef()
   const { camera } = useThree()
 
+console.count("loader :");
 
   const raycaster = new THREE.Raycaster()
   //console.log('loader rendered')
   useEffect(() => {
-    let mixer
+   
+
     if (gltf.animations.length) {
       mixer = new THREE.AnimationMixer(gltf.scene)
       const action = mixer.clipAction(gltf.animations[0])
+      console.log(gltf.animations);
       action.play()
       // action.halt(8)
       gltf.animations.forEach((clip) => {
         // const action = mixer.clipAction(clip)
-        console.log(clip)
-        // action.play()
+       
+        action.play()
 
         // action.halt(props.aniamtionDuration)
       })
     }
-  }, [])
-
+  }, [props.name.path])
+// useEffect(() => {
+//   gltf.dispose();
+// }, [props.name.path])
+ useEffect(() => {
+    return () => {
+      console.log("dispose");
+      gltf.scene.traverse((child) => {
+        if (child.isMesh) {
+          child.geometry.dispose();
+          child.material.dispose();
+        }
+      });
+    };
+  }, [gltf]);
  
   
   useEffect(() => {
+
     
 if(clickedObject)clickedObject.material.color=props.materialColor
   
@@ -78,14 +96,14 @@ if(clickedObject)clickedObject.material.color=props.materialColor
   }
 
   //*********/
-  useFrame(() => {
+  useFrame((state, deltaTime) => {
     orbitRef.current.update()
-    
+    if(mixer) mixer.update(deltaTime);
   })
 
   return (
     <>
-       {/* <pointLight position={[0, 1, 0]} color="#001BFF" intensity={0.6} /> */}
+       <pointLight position={[-4, 1, -4]} color="#ffffff" intensity={0.7} />
       <ambientLight intensity={0.2} />
       <directionalLight color="#ffffff" intensity={0.5} position={[3, 0, 3]} />
       <OrbitControls
